@@ -2,19 +2,24 @@ import React from "react";
 import "../styles/App.css";
 const ChatDisplay = ({ content, key }) => {
   // method to change the time format
+  const addZero=(i)=> {
+    if (i < 10) {i = "0" + i}
+    return i;
+  }
+
   const timeFormatchange = () => {
     let date = new Date(content.timestamp);
     let emptySpace = " ";
     let newDate =
-      date.getDay() +
+      date.getDate() +
       emptySpace +
       date.toLocaleString("default", { month: "short" }) +
       emptySpace +
-      date.getUTCFullYear() +
+      date.getFullYear() +
       emptySpace +
-      date.getHours() +
+      addZero(date.getHours()) +
       ":" +
-      date.getMinutes();
+      addZero(date.getMinutes());
     console.log("newDate", newDate);
     return newDate;
   };
@@ -25,7 +30,7 @@ const ChatDisplay = ({ content, key }) => {
       <div
         key={key}
         className="message"
-        id={content.author !== "you" ? "you" : "other"} 
+        id={content.author !== "you" ? "other" : "you"} 
         // added styles to sender and receiver 
       >
         <div className="message">
@@ -36,7 +41,7 @@ const ChatDisplay = ({ content, key }) => {
               ) : null}
               <p>{content.message}</p>
               <br />
-              <p id="time">{timeFormatchange()}</p>
+              <p id="time">{timeFormatchange()}</p> 
             </div>
           </div>
         </div>
