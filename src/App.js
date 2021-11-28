@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import ChatDisplay from "./Components/ChatDisplay";
+import SendMessage from "./Components/SendMessage";
+import "./styles/App.css";
+const App = () => {
+  const [data, setData] = useState([]);
+  // Data fetch from url
+  useEffect(() => {
+    fetch("https://chatty.kubernetes.doodle-test.com/api/chatty/v1.0", {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Token: "FGvviHC9KSai",
+      },
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          console.log("result", result);
+          setData(result);
+        },
+        (error) => {
+          console.log("error", error);
+        }
+      );
+  }, []);
 
-function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="chat-window">
+      <div className="chat-header">
+        <p>ChatApp</p>
+      </div>
+      <div className="chat-body">
+        <ChatDisplay />
+      </div>
+      <SendMessage />
     </div>
   );
-}
+};
 
 export default App;
