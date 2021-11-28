@@ -5,6 +5,12 @@ import ScrollToBottom from "react-scroll-to-bottom";
 import "./styles/App.css";
 const App = () => {
   const [data, setData] = useState([]);
+  const[length,setLength]=useState(0);
+// To rerender when data is posted to api
+  const onChange=()=>{
+    console.log("inside onChange ");
+    setLength(0);
+  }
   // Data fetch from url
   useEffect(() => {
     fetch("https://chatty.kubernetes.doodle-test.com/api/chatty/v1.0", {
@@ -20,12 +26,13 @@ const App = () => {
         (result) => {
           console.log("result", result);
           setData(result);
+          setLength(result.length);
         },
         (error) => {
           console.log("error", error);
         }
       );
-  }, []);
+  }, [length]);
 
   return (
     <div className="chat-window">
@@ -39,7 +46,7 @@ const App = () => {
           })}
         </ScrollToBottom>
       </div>
-      <SendMessage />
+      <SendMessage change={onChange}/>
     </div>
   );
 };

@@ -74,3 +74,8 @@ body {
   justify-content: flex-end;
   background-color: #fdf998;
 }
+#author,
+#time {
+  color: grey;
+  padding-bottom: 10px;
+}
