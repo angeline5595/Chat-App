@@ -32,7 +32,9 @@ const App = () => {
         <p>ChatApp</p>
       </div>
       <div className="chat-body">
-        <ChatDisplay />
+      {data.map((messageContent,id) => {
+         return <ChatDisplay key={id} content={messageContent}/>
+          })}
       </div>
       <SendMessage />
     </div>
