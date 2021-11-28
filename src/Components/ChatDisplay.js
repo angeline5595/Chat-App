@@ -1,6 +1,15 @@
 import React from "react";
 import "../styles/App.css";
 const ChatDisplay = ({content,key}) => {
+// method to change the time format
+  const timeFormatchange=()=>{
+    let date=new Date(content.timestamp);
+    let emptySpace=" ";
+    let newDate= date.getDay() +emptySpace+date.toLocaleString('default', { month: 'short' })+emptySpace+date.getUTCFullYear()+emptySpace+date.getHours()+":"+date.getMinutes();
+    console.log("newDate",newDate);
+    return newDate;
+  }
+
   if(content._id!=="61a21c5148c220001b5f6bef")//To avoid a wrongformat Data sent to api. 
             {
   return (
@@ -11,7 +20,7 @@ const ChatDisplay = ({content,key}) => {
           <br />
           <p>{content.message}</p>
           <br />
-          <p>{content.timestamp}</p>
+          <p>{ timeFormatchange()}</p>
         </div>
       </div>
     </div>
