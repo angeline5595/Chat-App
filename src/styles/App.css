@@ -61,3 +61,16 @@ body {
   overflow-wrap: break-word;
   word-break: break-word;
 }
+#you {
+  justify-content: flex-start;
+}
+#you .message-content {
+  justify-content: flex-start;
+}
+#other {
+  justify-content: flex-end;
+}
+#other .message-content {
+  justify-content: flex-end;
+  background-color: #fdf998;
+}

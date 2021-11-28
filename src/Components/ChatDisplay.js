@@ -25,15 +25,18 @@ const ChatDisplay = ({ content, key }) => {
       <div
         key={key}
         className="message"
+        id={content.author !== "you" ? "you" : "other"} 
+        // added styles to sender and receiver 
       >
         <div className="message">
           <div>
             <div className="message-content">
-              <p>{content.author}</p>
-              <br />
+              {content.author !== "you" ? (
+                <p id="author">{content.author}</p>
+              ) : null}
               <p>{content.message}</p>
               <br />
-              <p>{timeFormatchange()}</p>
+              <p id="time">{timeFormatchange()}</p>
             </div>
           </div>
         </div>

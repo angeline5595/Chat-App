@@ -33,9 +33,9 @@ const App = () => {
         <p>ChatApp</p>
       </div>
       <div className="chat-body">
-      <ScrollToBottom className="message-container">
-          {data.map((messageContent,id) => {
-         return <ChatDisplay key={id} content={messageContent}/>
+        <ScrollToBottom className="message-container">
+          {data.map((messageContent, id) => {
+            return <ChatDisplay key={id} content={messageContent} />;
           })}
         </ScrollToBottom>
       </div>
