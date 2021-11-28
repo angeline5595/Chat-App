@@ -3,4 +3,61 @@ body {
   margin: 0%;
   padding: 0%;
 }
+.chat-window {
+  margin: auto;
+  width: 1140px;
+  height: 750px;
+  margin-top: 3%;
+}
 
+.chat-window p {
+  margin: 0;
+}
+.chat-window .chat-header {
+  height: 45px;
+  background: #263238;
+  position: relative;
+}
+.chat-window .chat-header p {
+  display: block;
+  padding: 0 1em 0 2em;
+  color: #fff;
+  font-weight: 700;
+  line-height: 45px;
+}
+
+.chat-window .chat-body {
+  height: calc(750px - (45px + 70px));
+  background: url(../Images/body.png);
+  position: relative;
+}
+.chat-window .chat-body .message-container {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.chat-window .chat-body .message-container::-webkit-scrollbar {
+  display: none;
+}
+.chat-window .chat-body .message {
+  height: auto;
+  padding: 10px;
+  display: flex;
+}
+.chat-window .chat-body .message .message-content {
+  width: auto;
+  height: auto;
+  min-height: 40px;
+  max-width: 420px;
+  background-color: white;
+  border-radius: 5px;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  margin: 16px;
+  padding: 16px;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}

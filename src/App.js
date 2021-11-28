@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ChatDisplay from "./Components/ChatDisplay";
 import SendMessage from "./Components/SendMessage";
+import ScrollToBottom from "react-scroll-to-bottom";
 import "./styles/App.css";
 const App = () => {
   const [data, setData] = useState([]);
@@ -32,9 +33,11 @@ const App = () => {
         <p>ChatApp</p>
       </div>
       <div className="chat-body">
-      {data.map((messageContent,id) => {
+      <ScrollToBottom className="message-container">
+          {data.map((messageContent,id) => {
          return <ChatDisplay key={id} content={messageContent}/>
           })}
+        </ScrollToBottom>
       </div>
       <SendMessage />
     </div>
